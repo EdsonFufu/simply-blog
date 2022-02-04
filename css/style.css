@@ -1,5 +1,6 @@
 body{
-    font-family: 'Pacifico', cursive;
+    /* font-family: 'Pacifico', cursive; */
+    font-family: 'Quintessential', cursive;
     font-size: 18px;
 }
 
@@ -10,4 +11,60 @@ body{
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
+}
+
+#content {
+    background-color: transparent;
+    min-height: 400px;
+    width: 70%;
+    float: left;
+}
+
+#side-panel {
+    background-color: rgba(192, 187, 181,0.1);
+    min-height: 400px;
+    width: 30%;
+    float:right;
+    min-height: 600px;
+}
+
+.clearfix{
+    clear: both;
+    height: 100px;
+}
+
+img.img-title {
+    padding: 20px 20px;
+}
+
+#card {
+    border-top: 1px solid #5e5e5e;
+    margin-top: 10px;
+    padding: 4px;
+}
+
+h5.card-title{
+    text-transform: uppercase;
+    text-decoration: underline dashed darkblue;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+p.card-text {
+    letter-spacing: 1px;
+    line-height: 28px;
+    font-family: 'Satisfy', cursive;
+    font-size: 120%;
+}
+
+.popular{
+    padding: 12px;
+}
+
+.recent{
+    padding: 12px;
+}
+
+.popular ul li,.recent ul li {
+    font-family: 'Courier New', Courier, monospace;
 }
