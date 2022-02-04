@@ -11,21 +11,13 @@ body{
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
+    vertical-align: middle;
+    color: white;
 }
 
-#content {
-    background-color: transparent;
-    min-height: 400px;
-    width: 70%;
-    float: left;
-}
 
-#side-panel {
-    background-color: rgba(192, 187, 181,0.1);
-    min-height: 400px;
-    width: 30%;
-    float:right;
-    min-height: 600px;
+#sticky-footer.container > small {
+    color: white;
 }
 
 .clearfix{
@@ -33,38 +25,175 @@ body{
     height: 100px;
 }
 
-img.img-title {
-    padding: 20px 20px;
-}
 
-#card {
-    border-top: 1px solid #5e5e5e;
-    margin-top: 10px;
-    padding: 4px;
-}
 
-h5.card-title{
-    text-transform: uppercase;
-    text-decoration: underline dashed darkblue;
-    line-height: 30px;
-    font-weight: bold;
-}
 
-p.card-text {
-    letter-spacing: 1px;
-    line-height: 28px;
-    font-family: 'Satisfy', cursive;
-    font-size: 120%;
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+    #content {
+        background-color: transparent;
+        min-height: 400px;
+        width: 70%;
+        float: left;
+    }
+    
+    #side-panel {
+        background-color: rgba(192, 187, 181,0.1);
+        min-height: 400px;
+        width: 30%;
+        float:right;
+        min-height: 600px;
+    }
+    
+    img.img-title {
+        padding: 20px 20px;
+    }
+    
+    #card {
+        border-top: 1px solid #5e5e5e;
+        margin-top: 10px;
+        padding: 4px;
+    }
+    
+    h5.card-title{
+        text-transform: uppercase;
+        text-decoration: underline dashed darkblue;
+        line-height: 30px;
+        font-weight: bold;
+    }
+    
+    p.card-text {
+        letter-spacing: 1px;
+        line-height: 28px;
+        font-family: 'Satisfy', cursive;
+        font-size: 120%;
+    }
+    
+    .popular{
+        padding: 12px;
+    }
+    
+    .recent{
+        padding: 12px;
+    }
+    
+    .popular ul li,.recent ul li {
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 10px;
+        max-width: 50%;
+        max-height: 400px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 3% 30% 20% 30%;
+    
+    }
+    
 }
-
-.popular{
-    padding: 12px;
-}
-
-.recent{
-    padding: 12px;
-}
-
-.popular ul li,.recent ul li {
-    font-family: 'Courier New', Courier, monospace;
-}
+   
+  /* For Tablet View */
+  @media screen and (min-device-width: 768px)
+  and (max-device-width: 1024px) {
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 300px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 10% 10% 5% 10%;
+    
+    }
+  }
+   
+  /* For Mobile Portrait View */
+  @media screen and (max-device-width: 480px)
+  and (orientation: portrait) {
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 300px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 10% 10% 5% 10%;
+    
+    }
+  }
+   
+  /* For Mobile Landscape View */
+  @media screen and (max-device-width: 640px)
+  and (orientation: landscape) {
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 300px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 10% 10% 5% 10%;
+    
+    }
+  }
+   
+  /* For Mobile Phones Portrait or Landscape View */
+  @media screen and (max-device-width: 640px) {
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 300px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 10% 10% 5% 10%;
+    
+    }
+  }
+   
+  /* For iPhone 4 Portrait or Landscape View */
+  @media screen and (min-device-width: 320px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 300px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 10% 10% 5% 10%;
+    
+    }
+  }
+   
+  /* For iPhone 5 Portrait or Landscape View */
+  @media (device-height: 568px) and (device-width: 320px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 300px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 10% 10% 5% 10%;
+    
+    }
+  }
+   
+  /* For iPhone 6 and 6 plus Portrait or Landscape View */
+  @media (min-device-height: 667px) and (min-device-width: 375px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+    .content > form {
+        border: #5e5e5e 1px solid;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 300px;
+        vertical-align: middle;
+        padding: 20px;
+        margin: 10% 10% 5% 10%;
+    
+    }
+  }
