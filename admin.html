@@ -14,6 +14,7 @@
     <script language="JavaScript" type="text/javascript" src="js/jquery.dataTables-1.10.0.min.js"></script>
     <link href="css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
     <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
 
@@ -58,9 +59,9 @@
                 </div>
               </nav>
         </header>
-        <section class="content ">
+        <section class="content" style="width: 100%;">
         
-            <div class="container" style="min-height: 600px;">
+            <div class="container col-md-12" style="min-height: 1500px;">
 
             <div id="list">
                 <table id="table" class="display"></table>
@@ -68,56 +69,59 @@
                     <button type="submit" class="submit btn btn-primary" id="add">Add</button>
                 </div>
             </div>
-            <form class="form-horizontal" role="form" id="formID">
+            <form class="form-horizontal" role="form" id="formID" style="width: 100%;">
                 <div class="form-group">
-                    <label for="seq" class="col-sm-2 control-label">Sequence</label>
-                    <div class="col-sm-6">
-                        <p class="form-control-static" id="seq"></p>
+                    <label for="seq" class="col-sm-2 control-label" style="display: none;">Id</label>
+                    <div class="col-sm-12">
+                        <p style="display: none;" class="form-control-static" id="seq"></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="useId" class="col-sm-2 control-label">User ID</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control validate[required,custom[AID]]" id="useId" placeholder="User ID">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control validate[required]" id="useId" placeholder="User ID" value="10">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="temperature" class="col-sm-2 control-label">Temperature(degC)</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control validate[required,custom[number]]" id="temperature" placeholder="Temperature(degC)">
+                    <label for="title" class="col-sm-2 control-label">Title</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control validate[required]" id="title" placeholder="Post Title">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="current" class="col-sm-2 control-label">Current(mA)</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control validate[required,custom[number]]" id="current" placeholder="Current(mA)">
+                    <label for="summary" class="col-sm-2 control-label">Summary</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control validate[required]" id="summary" placeholder="Post Summary">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="noise" class="col-sm-2 control-label">Noise</label>
+                    <div class="col-sm-12">
+                    <label for="noise" class="col-sm-2 control-label">Publish?</label>
+                    </div>
                     <div class="col-sm-6">
-                        <div class="radio">
+                        <div class="radio" style="float: left;margin-right: 20px;">
                             <label>
-                                <input type="radio" class="validate[required]" name="noise" value="noNoise">
-                                No noise
+                                <input type="radio" class="validate[required]" name="publish" value="No"/>
+                                No
                             </label>
                         </div>
-                        <div class="radio">
+                        <div class="radio" style="float: left;">
                             <label>
-                                <input type="radio" class="validate[required]" name="noise" value="noisy">
-                                Noisy
+                                <input type="radio"  class="validate[required]" name="publish" value="Yes">
+                                Yes
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="note" class="col-sm-2 control-label">Note</label>
-                    <div class="col-sm-6">
-                        <textarea id="note" class="form-control" rows="3"></textarea>
+                    <label for="content" class="col-sm-12 control-label">Content</label>
+                    <div class="col-md-12">
+                        <textarea id="content" class="form-control" rows="2"></textarea>
                     </div>
                 </div>
+                <br/>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-8">
+                    <div class="col-sm-offset-2 col-sm-12">
                         <button class="btn btn-default" id="cancel">Cancel</button>
                         <button type="submit" class="submit btn btn-primary" id="save">Save</button>
                     </div>
@@ -136,7 +140,7 @@
 </body>
 <script>
 	var editor; // use a global for the submit and return data rendering in the examples
-	var formId="sample";
+	var formId="blog";
 	var oTable;
 	$(document).ready(function(){
 		$('#formID').hide();
@@ -162,7 +166,7 @@
 		var skip=0;
 		var seq=0;
 		var index=0;
-		var icons  ='<span class="glyphicon glyphicon-edit">&nbsp;</span><span class="glyphicon glyphicon-remove"></span>';
+		var icons  ='<span class="fa fa-edit">&nbsp;</span><span class="fa fa-trash"></span>';
 
 		while ( skip<2 ) {
 			var key=formId+"_"+index;
@@ -174,9 +178,10 @@
 			}
 			var object=null;
 			object=JSON.parse(json);
-			var note= object.note;
-			note=note.replace(/\n/g, "<br>");
-			dataSet[seq]=[index, icons, object.userId, object.timestamp, object.temperature, object.current, object.noise, note];
+			var content= object.content;
+			content=content.replace(/\n/g, "<br>").substring(1, 200);
+        
+			dataSet[seq]=[index , icons, object.userId, object.timestamp, object.title, object.summary, object.publish, content];
 			index=index+1;
 			seq=seq+1;
 		}
@@ -184,18 +189,18 @@
 		oTable=$('#table').dataTable({
 			"data": dataSet,
 			"columns": [
-			{ "title": "Seq", "class": "center" },
+			{ "title": "#", "class": "center" },
 			{ "title": "", "class": "center" },
 			{ "title": "User" },
 			{ "title": "Time" },
-			{ "title": "Temp.<br>(degC)", "class": "center" },
-			{ "title": "Current<br>(mA)", "class": "center" },
-			{ "title": "Noise" },
-			{ "title": "Note" }
+			{ "title": "Title", "class": "center" },
+			{ "title": "Summary", "class": "center" },
+			{ "title": "Publish?" },
+			{ "title": "Post" }
 			]
 		});
 
-		$('#table tbody').on( 'click', '.glyphicon-remove', function () {
+		$('#table tbody').on( 'click', '.fa-trash', function () {
 		    var row = $(this).parents('tr');
 		    var seq = row.children()[0].innerHTML;
 		    if(window.confirm('Are you sure to delete? Seq='+seq)){
@@ -216,15 +221,15 @@
 		    location.reload(true);
 		} );
 
-		$('#table tbody').on( 'click', '.glyphicon-edit', function () {
+		$('#table tbody').on( 'click', '.fa-edit', function () {
 		    $('#list').hide();
 		    var rows = $(this).parents('tr').children();
 		    $('#seq').text(rows[0].innerHTML);
 		    $('#useId').val(rows[2].innerHTML);
-		    $('#temperature').val(rows[4].innerHTML);
-		    $('#current').val(rows[5].innerHTML);
-		    $('input[name="noise"]').val([rows[6].innerHTML]);
-		    $('#note').val((rows[7].innerHTML).replace(/(<br>)/g, "\n"));
+		    $('#title').val(rows[4].innerHTML);
+		    $('#summary').val(rows[5].innerHTML);
+		    $('input[name="publish"]').val([rows[6].innerHTML]);
+		    $('#content').val((rows[7].innerHTML).replace(/(<br>)/g, "\n"));
 		    $('#formID').show();
 		} );
 
@@ -240,10 +245,10 @@
 		var object={
 			"userId":$("#useId").val(),
 			"timestamp": timestamp,
-			"temperature": $("#temperature").val(),
-			"current": $("#current").val(),
-			"noise":$('input[name="noise"]:checked').val(),
-			"note": $("#note").val()
+			"title": $("#title").val(),
+			"summary": $("#summary").val(),
+			"publish":$('input[name="publish"]:checked').val(),
+			"content": $("#content").val()
 		}
 		localStorage.setItem(key, JSON.stringify(object));
 		alert("Saved!")
