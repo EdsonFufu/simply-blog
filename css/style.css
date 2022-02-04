@@ -15,6 +15,10 @@ body{
     color: white;
 }
 
+#content {
+    padding: 20px;
+}
+
 
 #sticky-footer.container > small {
     color: white;
@@ -24,12 +28,40 @@ body{
     clear: both;
     height: 100px;
 }
+section.container{
+    background-color: rgba(192, 187, 181,0.1);
+}
 
+#navbarSupportedContent{
+    background-color: rgba(243, 167, 67, 0.884);
+}
+
+ul.navbar-nav li.nav-item  a.nav-link {
+    color: white;
+}
+
+ul.navbar-nav li.nav-item  a.active {
+    color: rgba(62, 146, 202,0.6);
+}
+
+ul.navbar-nav li.nav-item:hover{
+    background-color: rgba(20, 38, 207, 0.9);
+    color: rgba(247, 212, 15, 0.966);
+}
+
+section > div#content  h1 {
+    margin: 20px 20% 20px 20%;
+    font-size: 150px;
+    max-width: 60%;
+    color: rgba(47, 36, 212, 0.5);
+   
+}
 
 
 
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
+    
     #content {
         background-color: transparent;
         min-height: 400px;
@@ -81,7 +113,7 @@ body{
         font-family: 'Courier New', Courier, monospace;
     }
     
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 10px;
         max-width: 50%;
@@ -97,7 +129,7 @@ body{
   /* For Tablet View */
   @media screen and (min-device-width: 768px)
   and (max-device-width: 1024px) {
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 8px;
         max-width: 90%;
@@ -112,7 +144,7 @@ body{
   /* For Mobile Portrait View */
   @media screen and (max-device-width: 480px)
   and (orientation: portrait) {
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 8px;
         max-width: 90%;
@@ -127,7 +159,7 @@ body{
   /* For Mobile Landscape View */
   @media screen and (max-device-width: 640px)
   and (orientation: landscape) {
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 8px;
         max-width: 90%;
@@ -141,7 +173,7 @@ body{
    
   /* For Mobile Phones Portrait or Landscape View */
   @media screen and (max-device-width: 640px) {
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 8px;
         max-width: 90%;
@@ -156,7 +188,7 @@ body{
   /* For iPhone 4 Portrait or Landscape View */
   @media screen and (min-device-width: 320px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 8px;
         max-width: 90%;
@@ -171,7 +203,7 @@ body{
   /* For iPhone 5 Portrait or Landscape View */
   @media (device-height: 568px) and (device-width: 320px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 8px;
         max-width: 90%;
@@ -186,7 +218,7 @@ body{
   /* For iPhone 6 and 6 plus Portrait or Landscape View */
   @media (min-device-height: 667px) and (min-device-width: 375px)
   and (-webkit-min-device-pixel-ratio: 3) {
-    .content > form {
+    section.content > form {
         border: #5e5e5e 1px solid;
         border-radius: 8px;
         max-width: 90%;
