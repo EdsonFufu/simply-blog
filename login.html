@@ -39,7 +39,10 @@
                             <a class="nav-link active" href="login.html">Login</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link active" href="contact.html">Contact</a>
+                            <a class="nav-link" href="admin.html">Admin</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
                           </li>
                           
                         </ul>
@@ -52,20 +55,21 @@
                   </nav>
             </header>
             <section class="content">
-                <form class="row g-3" action="admin.html">
+                <form class="row g-3" action="admin.html" onsubmit="return login();">
                     <div class="col-md-12">
-                      <label for="inputEmail4" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="inputEmail4">
+                      <label for="inputEmail4" class="form-label">Username</label>
+                      <input type="username" class="form-control" id="username">
                     </div>
                     <div class="col-md-12">
                       <label for="inputPassword4" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4">
+                      <input type="password" class="form-control" id="password">
                     </div>
                     
                     
                     <div class="col-12">
                       <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
+                    <div id="login-error"></div>
                   </form>
             </section>
             <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
@@ -74,7 +78,27 @@
                 </div>
               </footer>
         </div>
-    <script src="index.js"></script>
+    <script>
+
+        function login(){
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+        
+            if(username === "" || password === ""){
+                document.getElementById("login-error").innerHTML="Plese enter username and passowrd......"
+                return false
+            }
+            if(username === "admin" && password === "admin"){
+                location.href = "admin.html";
+            }else{
+                document.getElementById("login-error").innerHTML="Login Fail......Please try aggain with correct credentials"
+                return false
+            }
+
+        }
+
+    </script>
      <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: Bootstrap Bundle with Popper -->

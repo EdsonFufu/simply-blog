@@ -44,10 +44,13 @@
                         <a class="nav-link" href="blog-list.html">Blog List</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link active" href="login.html">Login</a>
+                        <a class="nav-link" href="login.html">Login</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link active" href="contact.html">Contact</a>
+                        <a class="nav-link active" href="admin.html">Admin</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
                       </li>
                       
                     </ul>
@@ -61,7 +64,7 @@
         </header>
         <section class="content" style="width: 100%;">
         
-            <div class="container col-md-12" style="min-height: 1500px;">
+            <div class="container col-md-12" style="">
 
             <div id="list">
                 <table id="table" class="display"></table>
@@ -128,7 +131,7 @@
                 </div>
             </form>
             </div>
-        
+            <div class="clearfix"></div>
         </section>
         <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
             <div class="container text-center">
@@ -179,7 +182,7 @@
 			var object=null;
 			object=JSON.parse(json);
 			var content= object.content;
-			content=content.replace(/\n/g, "<br>").substring(1, 200);
+			content=content.replace(/\n/g, "<br>");
         
 			dataSet[seq]=[index , icons, object.userId, object.timestamp, object.title, object.summary, object.publish, content];
 			index=index+1;
@@ -187,6 +190,21 @@
 		}
 
 		oTable=$('#table').dataTable({
+            scrollY:        "600px",
+            scrollX:        true,
+            scrollCollapse: true,
+            paging:         true,
+            columnDefs: [
+                { width: 20, targets: 0 },
+                { width: 50, targets: 1 },
+                { width: 50, targets: 2 },
+                { width: 100, targets: 3 },
+                { width: 200, targets: 4 },
+                { width: 300, targets: 5 },
+                { width: 50, targets: 6 },
+                { width: 650, targets: 7 },
+            ],
+            fixedColumns: true,
 			"data": dataSet,
 			"columns": [
 			{ "title": "#", "class": "center" },
@@ -195,10 +213,12 @@
 			{ "title": "Time" },
 			{ "title": "Title", "class": "center" },
 			{ "title": "Summary", "class": "center" },
-			{ "title": "Publish?" },
+			{ "title": "Publish?", "class": "center" },
 			{ "title": "Post" }
 			]
 		});
+
+       
 
 		$('#table tbody').on( 'click', '.fa-trash', function () {
 		    var row = $(this).parents('tr');
@@ -255,10 +275,10 @@
 	}
 
 	function restoreItems() {
-		var skip=0;
+		var skip=1;
 		var index=1;
-		var previous=JSON.parse(localStorage.getItem(formId+"_0"));
-		var prevIndex=0;
+		var previous=JSON.parse(localStorage.getItem(formId+"_1"));
+		var prevIndex=1;
 		while ( skip<2 ) {
 			var key=formId+"_"+index;
 			var object=JSON.parse(localStorage.getItem(key));

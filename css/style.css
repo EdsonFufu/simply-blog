@@ -57,7 +57,14 @@ section > div#content  h1 {
    
 }
 
+div.card-body {
+    margin-left: 10px;
+}
 
+span.read-now{
+    float: right;
+    margin-right: 20px;
+}
 
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
