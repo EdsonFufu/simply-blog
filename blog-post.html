@@ -56,50 +56,17 @@
         </header>
         <section class="container">
             <div id="content">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-              </nav>
+              
                 <div id="productDisplay" class="card mb-3">
 
 
 
 
-                    <div class="row g-0"  id="card">
-                      <div class="col-md-4 col-sm-12">
-                        <img class="img-title rounded float-start" src="https://via.placeholder.com/280/5e5e5e/808080 ?Text=Digital.com C/O https://placeholder.com/#How_To_Set_Image_Size" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8 col-sm-12">
-                        <div class="card-body">
-                          <h5 class="card-title">Lorem Ipsum is simply dummy text of the printing and typesetting industry</h5>
-                          <p class="card-text">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                               when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                               It has survived not only five centuries, but also the leap into electronic typesetting, 
-                               remaining essentially unchanged.
-                            </p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
+                  
 
                     
                   </div>
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
+                  
             </div>
             <div id="side-panel">
                 <div class="popular">
@@ -194,28 +161,10 @@
 
     <script>
       var formId="blog";
-      let productList = JSON.parse(localStorage.getItem(formId));
-      let productDisplay = document.getElementById('productDisplay');
-      //Display result
-      productDisplay.innerHTML = '';
-      // for (let i = 0; i < productList.length; i++){
-      //   let id = productList[i].userId;
-      //   let timestamp = productList[i].timestamp;
-      //   let title = productList[i].title;
-      //   let summary = productList[i].summary;
-      //   let publish = productList[i].publish;
-      //   let content = productList[i].content;
-
-      //   productDisplay.innerHTML += '<li class="list-group-item"><strong>'+title+'</strong><p>'+summary+'</p><p>'+content+'</p><p><a' +
-      //       ' href="#" onclick="editProduct(\''+id+'\')" data-toggle="modal" data-target="#addNewProductModal">' +
-      //       '<i class="fa fa-edit green-text darken-2 "></i>&nbsp;Edit</a> &nbsp;&nbsp; ' +
-      //       '<a href="#" id="deleteId" onclick="deleteProduct(\''+id+'\')"><i class="fa fa-trash' +
-      //       ' red-text' +
-      //       ' darken-2"></i>&nbsp;' +
-      //       ' Delete</a>' +
-      //       ' </p>' +
-      //       '</li>';
-      //   }
+      var url_string = window.location.href; //window.location.href
+      var url = new URL(url_string);
+      var c = url.searchParams.get("seq");
+      console.log(c);
 
         var dataSet=[];
         var skip=0;
@@ -234,13 +183,19 @@
           object=JSON.parse(json);
           var content= object.content;
           content=content.replace(/\n/g, "<br>");
+
+          if(c == seq){
             
           dataSet[seq]=[index , object.userId, object.timestamp, object.title, object.summary, object.publish, content];
-          productDisplay.innerHTML += "<div class=\"row g-0\"  id=\"card\">"
-                        + "<div class='col-md-4'><img class='img-title rounded float-start' src='https://via.placeholder.com/280/5e5e5e/808080 ?Text="+object.title+"' class='img-fluid rounded-start' alt='"+object.title+"'></div>"
-                        + "<div class='col-md-8'><div class='card-body'><h5 class='card-title'><a href='blog-post.html?seq="+seq+"'>"+object.title+"</a></h5>"
-                        + "<p class='card-text'> " + object.summary + "</p><p class='card-text'><small class='text-muted'>"+ new Date(object.timestamp)+"</small></p>"
-                        + "</div><span class='read-now'><a href='blog-post.html?seq="+seq+"'><button class='btn btn-lg btn-primary'>Read Now</button></a></span></div></div>";
+    
+          productDisplay.innerHTML ="<div class='card' style='width: 100%;'> "
+                         + "<img class='img-title rounded float-start' src='https://via.placeholder.com/400x200/5e5e5e/808080 ?Text="+new Date(object.timestamp)+"' class='img-fluid rounded-start' alt='"+object.title+"' /> "
+                         + "<div class='card-body'>"
+                         + "<h5 class='card-title' style='color:blue'>"+object.title+"</h5>"
+                         + "<p class='card-text'> " + object.content + "</p>"
+                         + "</div></div>"
+
+          }
           index=index+1;
           seq=seq+1;
         }

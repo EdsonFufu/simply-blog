@@ -66,6 +66,10 @@ span.read-now{
     margin-right: 20px;
 }
 
+#login-error {
+    color: crimson;
+}
+
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
     
